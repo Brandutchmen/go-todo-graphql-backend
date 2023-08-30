@@ -1,0 +1,38 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Todo {
+  id: ID!
+  text: String!
+  status: Status!
+  done: Boolean!
+  # user: User!
+}
+
+# type User {
+#   id: ID!
+#   name: String!
+#   todos: [Todo!]!
+# }
+
+type Query {
+  # me: User
+  todos: [Todo!]!
+}
+
+input NewTodo {
+  text: String!
+  # userId: String!
+}
+
+enum Status {
+  PENDING
+  COMPLETE
+  CANCELLED
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+  updateTodoStatus(id: ID!, status: Status!): Todo!
+}
